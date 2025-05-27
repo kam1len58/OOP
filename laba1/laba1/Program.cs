@@ -7,8 +7,13 @@ class Program
         Person[] people = new Person[3];
         for (int i = 0; i < people.Length; i++)
         {
-            people[i]=new Person();
-            people[i].Name=Console.ReadLine();
+            string? name;
+            do
+            {
+                name = Console.ReadLine();
+            }
+            while (name == null || name.Length == 0);
+            people[i]=new Person(name);
         }   
         foreach(var person in people)
         {
