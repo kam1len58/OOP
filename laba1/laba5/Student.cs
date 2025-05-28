@@ -1,13 +1,14 @@
 ﻿namespace laba5;
 
-class Student:Person
+class Student : Person
 {
+    public void Study()
+    {
+        Console.WriteLine("Study");
+    }
+
     public Student(string name):base(name)
     {
-
-    }
-    public void Explain()
-    {
-        Console.WriteLine("Explain");
+        
     }
 }
