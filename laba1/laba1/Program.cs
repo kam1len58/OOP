@@ -1,4 +1,4 @@
-﻿namespace laba1;
+﻿namespace Laba1;
 
 class Program
 {

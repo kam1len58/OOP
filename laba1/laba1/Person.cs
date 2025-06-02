@@ -1,8 +1,19 @@
-﻿namespace laba1;
+﻿namespace Laba1;
 
 public class Person
 {
-    public string? Name { get; set; }
+    private string? name;
+    public string Name
+    {
+        get
+        {
+            return name!;
+        }
+        set
+        {
+            name = value;
+        }
+    }
     public Person(string name)
     {
         Name = name;
