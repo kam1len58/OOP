@@ -2,7 +2,7 @@
 
 public class Person
 {
-    public required string? Name { get; set; }
+    public required string? Name { get; init; }
 
     //public Person(string name)
     //{
