@@ -7,5 +7,5 @@ class Person
         Console.WriteLine("Hello!");
     }
 
-    public required int SetAge { get; set; }
+    public required int SetAge { get; init; }
 }
