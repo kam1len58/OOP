@@ -1,6 +1,6 @@
-﻿namespace laba3;
+﻿namespace Laba3;
 
-class Teacher:Person
+class Teacher : Person
 {
     public void Explain()
     {

@@ -1,4 +1,4 @@
-﻿namespace laba3;
+﻿namespace Laba3;
 
 class Person
 {
@@ -7,8 +7,5 @@ class Person
         Console.WriteLine("Hello!");
     }
 
-    public void SetAge(int age)
-    {
-        Console.WriteLine($"My age is: {age} years old");
-    }
+    public required int SetAge { get; set; }
 }
