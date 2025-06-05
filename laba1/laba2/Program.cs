@@ -18,7 +18,7 @@ class Program
 
         for (int i = 0; i < people.Length; i++)
         {
-            people[i] = new Person{ Name = Console.ReadLine() };
+            people[i] = new Person { Name = Console.ReadLine() };
         }
 
         foreach (var person in people)

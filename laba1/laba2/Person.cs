@@ -2,7 +2,7 @@
 
 public class Person
 {
-    public required string Name { get; set; }
+    public required string? Name { get; init; }
 
     //СПОСОБ 1
     //public Person(string name)
@@ -11,7 +11,7 @@ public class Person
     //}
     ~Person()
     {
-        Name = "";
+        
     }
 
     public override string ToString()
