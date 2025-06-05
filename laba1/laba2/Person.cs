@@ -2,12 +2,13 @@
 
 public class Person
 {
-    public string Name { get; set; }
+    public required string Name { get; set; }
 
-    public Person(string name)
-    {
-        Name = name;
-    }
+    //СПОСОБ 1
+    //public Person(string name)
+    //{
+    //    Name = name;
+    //}
     ~Person()
     {
         Name = "";
