@@ -1,6 +1,6 @@
-﻿namespace laba4;
+﻿namespace Laba4;
 
-class BigPhotoBook
+class BigPhotoBook : PhotoBook
 {
     public int Page { get; set; }
     public BigPhotoBook()

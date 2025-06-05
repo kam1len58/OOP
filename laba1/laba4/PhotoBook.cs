@@ -1,12 +1,12 @@
-﻿namespace laba4;
+﻿namespace Laba4;
 
 class PhotoBook
 {
     private int numPages { get; set; }
 
-    public int GetNumberPages()
+    public int GetNumberPages
     {
-        return numPages;
+        get { return numPages; }
     }
 
     public PhotoBook()
@@ -14,8 +14,8 @@ class PhotoBook
         numPages = 16;
     }
 
-    public PhotoBook(int page)
+    public PhotoBook(int _numPages)
     {
-        numPages = page;
+        numPages = _numPages;
     }
 }
