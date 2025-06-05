@@ -1,15 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35913.81
+VisualStudioVersion = 17.13.35913.81 d17.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "laba1", "laba1\laba1.csproj", "{F077A0E2-0F5C-44B8-8D00-8769FE09A3CE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "laba2", "laba2\laba2.csproj", "{4DB92DF9-8F38-4C8B-84BD-AC0A44AFF1E5}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "laba3", "laba3\laba3.csproj", "{6B76AC4B-A288-4B9E-89B1-6D918B00D0C7}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "laba4", "laba4\laba4.csproj", "{B4E19F20-13F9-4C55-A5C5-7B6956240237}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
