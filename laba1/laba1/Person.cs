@@ -2,17 +2,14 @@
 
 public class Person
 {
-    public required string? Name { get; init; }
+    public required string Name { get; init; }
 
-    //public Person(string name)
-    //{
-    //    Name = name;
-    //}
-
-    public override string ToString()
+    public Person(string name)
     {
-        return $"Hello! My name is {Name}";
+        Name = name;
     }
+
+    public override string ToString() => $"Hello! My name is {Name}";
 }
 
 
