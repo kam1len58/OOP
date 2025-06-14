@@ -24,7 +24,13 @@ class Program
         Person2[] person2s = new Person2[3];
         for (int i = 0; i < person2s.Length; i++)
         {
-            person2s[i] = new Person2{ Name = Console.ReadLine()!};
+            string? name;
+            do
+            {
+                name = Console.ReadLine();
+            }
+            while (name == null || name.Length == 0);
+            person2s[i] = new Person2 { Name = name };
         }
 
         foreach (var person in person2s)
