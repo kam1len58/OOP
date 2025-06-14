@@ -14,21 +14,20 @@ class Program
                 name = Console.ReadLine();
             }
             while (name == null || name.Length == 0);
-            people[i] = new Person(name) { Name = name };
+            people[i] = new Person(name);
         }
         foreach (var person1 in people)
         {
             Console.WriteLine(person1.ToString());
         }
 
-
-        Person[] people1 = new Person[3];
-        for (int i = 0; i < people1.Length; i++)
+        Person2[] person2s = new Person2[3];
+        for (int i = 0; i < person2s.Length; i++)
         {
-            people1[i] = new Person("") { Name = Console.ReadLine()! };
+            person2s[i] = new Person2{ Name = Console.ReadLine()!};
         }
 
-        foreach (var person in people)
+        foreach (var person in person2s)
         {
             Console.WriteLine(person.ToString());
         }
