@@ -1,4 +1,4 @@
-﻿namespace Laba3;
+﻿namespace WorkThree;
 
 class Student : Person
 {
@@ -9,6 +9,6 @@ class Student : Person
 
     public void ShowAge()
     {
-        Console.WriteLine($"My age is: {SetAge} years old");
+        Console.WriteLine($"My age is: {Age} years old");
     }
 }

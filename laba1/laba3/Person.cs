@@ -1,4 +1,4 @@
-﻿namespace Laba3;
+﻿namespace WorkThree;
 
 class Person
 {
@@ -7,5 +7,5 @@ class Person
         Console.WriteLine("Hello!");
     }
 
-    public required int SetAge { get; init; }
+    public required int Age { get; init; }
 }

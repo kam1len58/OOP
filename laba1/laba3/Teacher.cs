@@ -1,4 +1,4 @@
-﻿namespace Laba3;
+﻿namespace WorkThree;
 
 class Teacher : Person
 {
