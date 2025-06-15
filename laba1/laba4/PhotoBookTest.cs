@@ -1,4 +1,4 @@
-﻿namespace Laba4;
+﻿namespace WorkFour;
 
 public class PhotoBookTest
 {
@@ -9,5 +9,7 @@ public class PhotoBookTest
         PhotoBook photoBook = new PhotoBook(24);
         Console.WriteLine(photoBook.GetNumberPages);
         Console.WriteLine(new BigPhotoBook().Page);
+        BigPhotoBookInit bigPhotoBookInit = new BigPhotoBookInit { Page = 64 };
+        Console.WriteLine(bigPhotoBookInit.Page);
     }
 }
