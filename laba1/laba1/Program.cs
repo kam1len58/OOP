@@ -1,4 +1,4 @@
-﻿namespace Laba1;
+﻿namespace WorkOne;
 
 class Program
 {
@@ -21,8 +21,8 @@ class Program
             Console.WriteLine(person1.ToString());
         }
 
-        Person2[] person2s = new Person2[3];
-        for (int i = 0; i < person2s.Length; i++)
+        PersonWithInit[] persons = new PersonWithInit[3];
+        for (int i = 0; i < persons.Length; i++)
         {
             string? name;
             do
@@ -30,10 +30,10 @@ class Program
                 name = Console.ReadLine();
             }
             while (name == null || name.Length == 0);
-            person2s[i] = new Person2 { Name = name };
+            persons[i] = new PersonWithInit { Name = name };
         }
 
-        foreach (var person in person2s)
+        foreach (var person in persons)
         {
             Console.WriteLine(person.ToString());
         }

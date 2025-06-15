@@ -1,4 +1,4 @@
-﻿namespace Laba1;
+﻿namespace WorkOne;
 
 public class Person
 {

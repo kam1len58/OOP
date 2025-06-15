@@ -1,6 +1,6 @@
-﻿namespace Laba1;
+﻿namespace WorkOne;
 
-class Person2
+class PersonWithInit
 {
     public required string Name { get; init; }
 
