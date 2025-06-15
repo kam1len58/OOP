@@ -1,12 +1,12 @@
 ﻿namespace WorkTwo;
 
-public class Person
+public class PersonWithInit
 {
-    public string Name { get; }
+    public required string Name { get; init; }
 
-    public Person(string name)
+    ~PersonWithInit()
     {
-        Name = name;
+
     }
 
     public override string ToString() => $"Hello! My name is {Name}";
