@@ -1,0 +1,6 @@
+﻿namespace WorkThree;
+
+class Program
+{
+    
+}
