@@ -2,10 +2,9 @@
 
 class PhotoBook
 {
-    private int _numPages { get; set; }
+    private int _numPages;
 
-    public int GetNumberPages => _numPages;
-
+    public int NumberPages => _numPages;
 
     public PhotoBook()
     {

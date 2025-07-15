@@ -1,6 +1,6 @@
 ﻿namespace WorkFour;
 
-class BigPhotoBook : PhotoBook
+class BigPhotoBook
 {
     public int Page { get; }
     public BigPhotoBook()
