@@ -21,7 +21,7 @@ class Program
             Console.WriteLine(person.ToString());
         }
 
-        PersonWithInit[] persons = new PersonWithInit[3];
+        PersonWithPrivateSet[] persons = new PersonWithPrivateSet[3];
         for (int i = 0; i < persons.Length; i++)
         {
             string? name;
@@ -30,7 +30,7 @@ class Program
                 name = Console.ReadLine();
             }
             while (name == null || name.Length == 0);
-            persons[i] = new PersonWithInit { Name = name };
+            persons[i] = new PersonWithPrivateSet(name);
         }
 
         foreach (var person in persons)
