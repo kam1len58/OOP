@@ -13,7 +13,7 @@ class Shop
         Address = address;
     }
 
-    List<(Product product, int quanity, int price)> productSet = new();
+    public List<(Product Product, int Quanity, int Price)> productSet = new();
 
     public void DeliveryOfGoods(Product product, int quanity, int price)
     { 
