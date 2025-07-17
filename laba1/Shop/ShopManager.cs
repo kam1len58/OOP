@@ -56,6 +56,12 @@ class ShopManager
             shops.Add((shop3, productName));
             return shops;
         }
+        else if (cheapProductPrice == cheapProduct1 && cheapProductPrice == cheapProduct2)
+        {
+            shops.Add((shop1, productName));
+            shops.Add((shop2, productName));
+            return shops;
+        }
         else if (cheapProductPrice == cheapProduct2 && cheapProductPrice == cheapProduct3)
         {
             shops.Add((shop2, productName));
