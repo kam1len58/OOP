@@ -2,7 +2,7 @@
 
 class PhotoBookTest
 {
-    static void Main(string[] args)
+    public static void Test()
     {
         PhotoBook book = new PhotoBook();
         Console.WriteLine(book.NumberPages);
