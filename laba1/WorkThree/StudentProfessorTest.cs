@@ -2,7 +2,7 @@
 
 class StudentProfessorTest
 {
-    static void Main(string[] args)
+    public static void Test()
     {
         Person person = new Person { Age = 0 };
         person.Greet();
