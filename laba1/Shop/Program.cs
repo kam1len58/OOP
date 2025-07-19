@@ -21,9 +21,5 @@ class Program
             (new Product(9, "СОЛЬ"), 50, 30),
             (new Product(10, "КАРТОФЕЛЬ"), 200, 25)
         );
-        foreach(var product in shop1.productSet)
-        {
-            Console.WriteLine(product);
-        }
     }
 }
