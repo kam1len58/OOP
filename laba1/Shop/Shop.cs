@@ -13,25 +13,19 @@ public class Shop
         Address = address;
     }
 
-    public List<(Product Product, int Quanity, int Price)> productSet = new();
+    public Dictionary<int, (Product, int Quanity, int Price)> productSet = new();
 
     public void DeliveryBatchProducts(params (Product Product, int Quanity, int Price)[] products)
     {
-        bool isSameProduct = false;
-        for (int i=0;i<products.Length;i++)
+        foreach (var product in products)
         {
-            for (int j=0;j<productSet.Count;j++)
+            if (productSet.TryGetValue(product.Product.Code, out (Product Product, int Quanity, int Price) value))
             {
-                if (products[i].Product.Code == productSet[j].Product.Code)
-                {
-                    productSet[j] = (products[i].Product, products[i].Quanity + productSet[j].Quanity, products[i].Price);
-                    isSameProduct = true;
-                    break;
-                }
+                productSet[product.Product.Code] = (product.Product, product.Quanity + value.Quanity, product.Price);
             }
-            if(!isSameProduct)
+            else
             {
-                productSet.Add(products[i]);
+                productSet[product.Product.Code] = (product.Product, product.Quanity, product.Price);
             }
         }
     }

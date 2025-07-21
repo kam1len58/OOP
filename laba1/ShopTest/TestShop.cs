@@ -51,18 +51,18 @@ public class DeliveryBatchProductsTests
             (new Product(1, "ХЛЕБ"), 80, 750),
             (new Product(2, "МОЛОКО"), 30, 980)
         ];
-        List<(Product Product, int Quanity, int Price)> batchAfterDelivery =new()
+        Dictionary<int, (Product Product, int Quanity, int Price)> batchAfterDelivery = new()
         {
-            (new Product(1, "ХЛЕБ"), 400, 750),
-            (new Product(2, "МОЛОКО"), 150, 980),
-            (new Product(3, "РИС"), 120, 1200),
-            (new Product(4, "МАСЛО"), 75, 150),
-            (new Product(5, "МЯСО"), 45, 400),
-            (new Product(6, "РЫБА"), 60, 30),
-            (new Product(7, "ЯЙЦА"), 300, 900),
-            (new Product(8, "САХАР"), 180, 760),
-            (new Product(9, "СОЛЬ"), 150, 300),
-            (new Product(10, "КАРТОФЕЛЬ"), 800, 225)
+            {1, (new Product(1, "ХЛЕБ"), 400, 750)},
+            {2, (new Product(2, "МОЛОКО"), 150, 980)},
+            {3, (new Product(3, "РИС"), 120, 1200)},
+            {4, (new Product(4, "МАСЛО"), 75, 150)},
+            {5, (new Product(5, "МЯСО"), 45, 400)},
+            {6, (new Product(6, "РЫБА"), 60, 30)},
+            {7, (new Product(7, "ЯЙЦА"), 300, 900)},
+            {8, (new Product(8, "САХАР"), 180, 760)},
+            {9, (new Product(9, "СОЛЬ"), 150, 300)},
+            {10, (new Product(10, "КАРТОФЕЛЬ"),800,225)}
         };
 
         //Act
@@ -72,11 +72,11 @@ public class DeliveryBatchProductsTests
         {
             IncludeFields = true,
         };
-        string actualJson = JsonSerializer.Serialize(shop.productSet,options);
-        string expectedJson = JsonSerializer.Serialize(batchAfterDelivery,options);
+        string actualJson = JsonSerializer.Serialize(shop.productSet, options);
+        string expectedJson = JsonSerializer.Serialize(batchAfterDelivery, options);
 
         //Assert
-        Assert.AreEqual(expectedJson,actualJson);
+        Assert.AreEqual(expectedJson, actualJson);
     }
 }
 

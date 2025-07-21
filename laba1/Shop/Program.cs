@@ -19,6 +19,7 @@ class Program
             (new Product(7, "ЯЙЦА"), 100, 90),
             (new Product(8, "САХАР"), 60, 60),
             (new Product(9, "СОЛЬ"), 50, 30),
+            (new Product(10, "КАРТОФЕЛЬ"), 200, 25),
             (new Product(10, "КАРТОФЕЛЬ"), 200, 25)
         );
     }
