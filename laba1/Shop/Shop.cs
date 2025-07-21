@@ -1,6 +1,6 @@
-﻿namespace Shop;
+﻿namespace WorkShop;
 
-class Shop
+public class Shop
 {
     public int Code { get; }
     public string Name { get; }
@@ -18,9 +18,9 @@ class Shop
     public void DeliveryBatchProducts(params (Product Product, int Quanity, int Price)[] products)
     {
         bool isSameProduct = false;
-        for (int i=0;products.Length>i;i++)
+        for (int i=0;i<products.Length;i++)
         {
-            for(int j=0;j<productSet.Count;j++)
+            for (int j=0;j<productSet.Count;j++)
             {
                 if (products[i].Product.Code == productSet[j].Product.Code)
                 {

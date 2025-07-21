@@ -1,4 +1,4 @@
-﻿namespace Shop;
+﻿namespace WorkShop;
 
 class Program
 {
