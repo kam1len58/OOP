@@ -12,25 +12,25 @@ class ShopManager
 
         foreach (var item in shop1.productSet)
         {
-            if (productCode == item.Product.Code)
+            if (productCode == item.Key)
             {
-                cheapProduct1 = item.Price;
+                cheapProduct1 = item.Value.Price;
             }
         }
 
         foreach (var item in shop2.productSet)
         {
-            if (productCode == item.Product.Code)
+            if (productCode == item.Key)
             {
-                cheapProduct2 = item.Price;
+                cheapProduct2 = item.Value.Price;
             }
         }
 
         foreach (var item in shop3.productSet)
         {
-            if (productCode == item.Product.Code)
+            if (productCode == item.Key)
             {
-                cheapProduct3 = item.Price;
+                cheapProduct3 = item.Value.Price;
             }
         }
 
@@ -90,9 +90,9 @@ class ShopManager
     {
         foreach (var item in shop.productSet)
         {
-            if (productCode == item.Product.Code)
+            if (productCode == item.Key)
             {
-                return item.Product.Name;
+                return item.Value.Product.Name;
             }
         }
         return null;
