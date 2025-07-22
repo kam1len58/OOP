@@ -1,92 +1,31 @@
-﻿using System.Collections.Generic;
+﻿namespace WorkShop;
 
-namespace Shop;
-
-class ShopManager
+public class ShopManager
 {
-    public List<(Shop Shop, string ProductName)> SearchCheapestProduct(Shop shop1, Shop shop2, Shop shop3, int productCode)
+    Shop shop1 = new Shop(1, "Магнит", "пр. Мира, 20");
+    Shop shop2 = new Shop(2, "Пятерочка", "ул. Ершова, 50");
+    Shop shop3 = new Shop(3, "Перекрёсток", "ул. Авангардная, 40");
+    Dictionary<int, (Shop Shop, string ProductName)> SearchProduct(Shop shop, int productCode)
     {
-        int cheapProduct1 = int.MaxValue;
-        int cheapProduct2 = int.MaxValue;
-        int cheapProduct3 = int.MaxValue;
-
-        foreach (var item in shop1.productSet)
+        Dictionary<int, (Shop Shop, string ProductName)> product = new();
+        string? productName = GetProductByCode(shop, productCode);
+        if (productName == null)
         {
-            if (productCode == item.Key)
+            Console.WriteLine("Такого продукта не существует");
+            return product;
+        }
+
+        foreach(var item in shop.productSet)
+        {
+            if(item.Value.Product.Name == productName)
             {
-                cheapProduct1 = item.Value.Price;
+                product.Add(item.Value.Price,(shop, item.Value.Product.Name));
             }
         }
-
-        foreach (var item in shop2.productSet)
-        {
-            if (productCode == item.Key)
-            {
-                cheapProduct2 = item.Value.Price;
-            }
-        }
-
-        foreach (var item in shop3.productSet)
-        {
-            if (productCode == item.Key)
-            {
-                cheapProduct3 = item.Value.Price;
-            }
-        }
-
-        List<(Shop shop, string productName)> shops = new();
-        string? productName = GetProductByCode(shop1, productCode) ?? GetProductByCode(shop2, productCode) ?? GetProductByCode(shop3, productCode);
-
-        var cheapProductPrice = Math.Min(cheapProduct1, Math.Min(cheapProduct2, cheapProduct3));
-        if (cheapProductPrice == int.MaxValue || productName==null)
-        {
-            Console.WriteLine("Такого товара не существует");
-            return shops;
-        }
-        else if (cheapProductPrice == cheapProduct1 && cheapProductPrice == cheapProduct3 && cheapProductPrice == cheapProduct2)
-        {
-            shops.Add((shop1, productName));
-            shops.Add((shop2, productName));
-            shops.Add((shop3, productName));
-            return shops;
-        }
-        else if (cheapProductPrice == cheapProduct1 && cheapProductPrice == cheapProduct3)
-        {
-            shops.Add((shop1, productName));
-            shops.Add((shop3, productName));
-            return shops;
-        }
-        else if (cheapProductPrice == cheapProduct1 && cheapProductPrice == cheapProduct2)
-        {
-            shops.Add((shop1, productName));
-            shops.Add((shop2, productName));
-            return shops;
-        }
-        else if (cheapProductPrice == cheapProduct2 && cheapProductPrice == cheapProduct3)
-        {
-            shops.Add((shop2, productName));
-            shops.Add((shop3, productName));
-            return shops;
-        }
-        else if (cheapProductPrice == cheapProduct1)
-        {
-            shops.Add((shop1, productName));
-            return shops;
-        }
-        else if (cheapProductPrice == cheapProduct2)
-        {
-            shops.Add((shop2, productName));
-            return shops;
-        }
-        else
-        {
-            shops.Add((shop3, productName));
-            return shops;
-        }
-
+        return product;
     }
 
-    public string? GetProductByCode(Shop shop, int productCode)
+     string? GetProductByCode(Shop shop, int productCode)
     {
         foreach (var item in shop.productSet)
         {
@@ -96,5 +35,61 @@ class ShopManager
             }
         }
         return null;
+    }
+
+    public List<(Shop Shop, string ProductName)> SearchCheapestProduct(Shop shop1, Shop shop2, Shop shop3, int productCode)
+    {
+        Dictionary<int, (Shop Shop, string ProductName)> cheapProduct1 = SearchProduct(shop1, productCode);
+        Dictionary<int, (Shop Shop, string ProductName)> cheapProduct2 = SearchProduct(shop2, productCode);
+        Dictionary<int, (Shop Shop, string ProductName)> cheapProduct3 = SearchProduct(shop3, productCode);
+        List<(Shop Shop, string ProductName)> shops = new();
+
+        int cheapestProductPrice = Math.Min(cheapProduct1.Keys.First(), Math.Min(cheapProduct2.Keys.First(), cheapProduct3.Keys.First()));
+        
+        if(cheapestProductPrice == 0)
+        {
+            Console.WriteLine("Такого товара не существует");
+            return shops;
+        }
+        else if (cheapestProductPrice == cheapProduct1.Keys.First() && cheapestProductPrice == cheapProduct2.Keys.First() && cheapestProductPrice == cheapProduct3.Keys.First())
+        {
+            shops.Add((shop1, cheapProduct1.Values.First().ProductName));
+            shops.Add((shop2, cheapProduct2.Values.First().ProductName));
+            shops.Add((shop3, cheapProduct3.Values.First().ProductName));
+            return shops;
+        }
+        else if (cheapestProductPrice == cheapProduct1.Keys.First() && cheapestProductPrice == cheapProduct3.Keys.First())
+        {
+            shops.Add((shop1, cheapProduct1.Values.First().ProductName));
+            shops.Add((shop3, cheapProduct3.Values.First().ProductName));
+            return shops;
+        }
+        else if (cheapestProductPrice == cheapProduct1.Keys.First() && cheapestProductPrice == cheapProduct2.Keys.First())
+        {
+            shops.Add((shop1, cheapProduct1.Values.First().ProductName));
+            shops.Add((shop2, cheapProduct2.Values.First().ProductName));
+            return shops;
+        }
+        else if (cheapestProductPrice == cheapProduct2.Keys.First() && cheapestProductPrice == cheapProduct3.Keys.First())
+        {
+            shops.Add((shop2, cheapProduct2.Values.First().ProductName));
+            shops.Add((shop3, cheapProduct3.Values.First().ProductName));
+            return shops;
+        }
+        else if (cheapestProductPrice == cheapProduct1.Keys.First())
+        {
+            shops.Add((shop1, cheapProduct1.Values.First().ProductName));
+            return shops;
+        }
+        else if (cheapestProductPrice == cheapProduct2.Keys.First())
+        {
+            shops.Add((shop2, cheapProduct1.Values.First().ProductName));
+            return shops;
+        }
+        else
+        {
+            shops.Add((shop3, cheapProduct3.Values.First().ProductName));
+            return shops;
+        }
     }
 }
