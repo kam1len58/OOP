@@ -18,12 +18,12 @@ public class TestShopCheapestProduct
             (new Product(2, "МОЛОКО"), 30, 85),
             (new Product(3, "РИС"), 40, 120),
             (new Product(4, "МАСЛО"), 25, 150),
-            (new Product(5, "МЯСО"), 15, 551),
+            (new Product(5, "МЯСО"), 15, 550),
             (new Product(6, "РЫБА"), 20, 390),
             (new Product(7, "ЯЙЦА"), 100, 90),
             (new Product(8, "САХАР"), 60, 60),
             (new Product(9, "СОЛЬ"), 50, 30),
-            (new Product(10, "КАРТОФЕЛЬ"), 200, 25)
+            (new Product(10, "КАРТОФЕЛЬ"), 200, 25),
         ];
         (Product Product, int Quanity, int Price)[] batchProducts2 =
         [
@@ -31,7 +31,7 @@ public class TestShopCheapestProduct
             (new Product(2, "МОЛОКО"), 25, 95),
             (new Product(3, "РИС"), 30, 100),
             (new Product(4, "МАСЛО"), 35, 120),
-            (new Product(5, "МЯСО"), 25, 550),
+            (new Product(5, "МЯСО"), 25, 555),
             (new Product(6, "РЫБА"), 40, 400),
             (new Product(7, "ЯЙЦА"), 50, 140),
             (new Product(8, "САХАР"), 80, 90),
@@ -49,23 +49,23 @@ public class TestShopCheapestProduct
             (new Product(7, "ЯЙЦА"), 40, 100),
             (new Product(8, "САХАР"), 100, 20),
             (new Product(9, "СОЛЬ"), 40, 35),
-            (new Product(10, "КАРТОФЕЛЬ"), 240, 55)
+            (new Product(10, "КАРТОФЕЛЬ"), 240, 15)
+
         ];
         List<(Shop Shop, string ProductName)> cheapestProduct = new()
         {
             (shop1,"МЯСО"),
-            (shop2, "МЯСО"),
-            (shop3, "МЯСО")
+            (shop3,"МЯСО")
         };
 
         //Act
         shop1.DeliveryBatchProducts(batchProducts1);
         shop2.DeliveryBatchProducts(batchProducts2);
         shop3.DeliveryBatchProducts(batchProducts3);
-        var result = shopManager.SearchCheapestProduct(shop1, shop2, shop3, 1);
-   
+        var result = shopManager.SearchCheapestShops(5, shop1, shop2, shop3);
+
         //Assert
-        CollectionAssert.AreEqual(result,cheapestProduct);
+        CollectionAssert.AreEqual(result, cheapestProduct);
     }
 }
 

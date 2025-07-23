@@ -20,7 +20,7 @@ class Program
             (new Product(7, "ЯЙЦА"), 100, 90),
             (new Product(8, "САХАР"), 60, 60),
             (new Product(9, "СОЛЬ"), 50, 30),
-            (new Product(10, "КАРТОФЕЛЬ"), 200, 25)
+            (new Product(10, "КАРТОФЕЛЬ"), 200, 45)
         );
 
         shop2.DeliveryBatchProducts
@@ -35,6 +35,7 @@ class Program
             (new Product(8, "САХАР"), 80, 90),
             (new Product(9, "СОЛЬ"), 30, 20),
             (new Product(10, "КАРТОФЕЛЬ"), 170, 45)
+
         );
 
         shop3.DeliveryBatchProducts
@@ -51,10 +52,14 @@ class Program
             (new Product(10, "КАРТОФЕЛЬ"), 240, 55)
         );
 
-        var shops = shopManager.SearchCheapestProduct(shop1, shop2, shop3, 10);
+        var shops = shopManager.SearchCheapestShops(5, shop1, shop2, shop3);
+        if (shops.Count == 0)
+        {
+            Console.WriteLine("Данный товар отсутствует");
+        }
         foreach (var item in shops)
         {
-            Console.WriteLine($"Самый дешёвый(ая) {item.ProductName} в магазине {item.Shop.Name}, код магазина {item.Shop.Code}");
+            Console.WriteLine($"Самый дешёвый(ая/ое) {item.ProductName} в магазине {item.Shop.Name}, код магазина {item.Shop.Code}");
         }
     }
 }
