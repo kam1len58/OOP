@@ -1,4 +1,4 @@
-﻿namespace Shop;
+﻿namespace WorkShop;
 
 class Program
 {
@@ -9,19 +9,21 @@ class Program
         Shop shop3 = new Shop(3, "Перекрёсток", "ул. Авангардная, 40");
         ShopManager shopManager = new ShopManager();
 
-        shop1.DeliveryOfGoods(new Product(1, "ХЛЕБ"), 80, 45);
-        shop1.DeliveryOfGoods(new Product(2, "МОЛОКО"), 30, 85);
-        shop1.DeliveryOfGoods(new Product(3, "РИС"), 40, 120);
-        shop1.DeliveryOfGoods(new Product(4, "МАСЛО"), 25, 150);
-        shop1.DeliveryOfGoods(new Product(5, "МЯСО"), 15, 400);
-        shop1.DeliveryOfGoods(new Product(6, "РЫБА"), 20, 300);
-        shop1.DeliveryOfGoods(new Product(7, "ЯЙЦА"), 100, 90);
-        shop1.DeliveryOfGoods(new Product(8, "САХАР"), 60, 60);
-        shop1.DeliveryOfGoods(new Product(9, "СОЛЬ"), 50, 30);
-        shop1.DeliveryOfGoods(new Product(10, "КАРТОФЕЛЬ"), 200, 25);
-
-        int budget = 100;
-        var result = shopManager.GetProductsWithinBudget(shop1, budget);
+        shop1.DeliveryBatchProducts
+        (
+            (new Product(1, "ХЛЕБ"), 80, 45),
+            (new Product(2, "МОЛОКО"), 30, 85),
+            (new Product(3, "РИС"), 40, 120),
+            (new Product(4, "МАСЛО"), 25, 150),
+            (new Product(5, "МЯСО"), 15, 400),
+            (new Product(6, "РЫБА"), 20, 300),
+            (new Product(7, "ЯЙЦА"), 100, 90),
+            (new Product(8, "САХАР"), 60, 60),
+            (new Product(9, "СОЛЬ"), 50, 30),
+            (new Product(10, "КАРТОФЕЛЬ"), 200, 25)
+        );
+        int budget = 1000;
+        var result = shopManager.GetProductsWithInBudget(budget, shop1);
         foreach (var product in result)
         {
             Console.WriteLine($"На {budget} рублей вы можете купить {product.NumberOfProducts} шт. {product.Product.Name} в магазине {product.Shop.Name}\n");
