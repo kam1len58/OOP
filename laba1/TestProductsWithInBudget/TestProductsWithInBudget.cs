@@ -41,14 +41,19 @@ public class TestProductsWithInBudget
             (shop1,new Product(7, "ЯЙЦА"),11),
             (shop1,new Product(8, "САХАР"),16),
             (shop1,new Product(9, "СОЛЬ"),33),
+            (shop1,new Product(10, "КАРТОФЕЛЬ"),40)
         };
 
         //Act
         shop1.DeliveryBatchProducts(batchProducts);
-        var result = shopManager.GetProductsWithInBudget(budget, shop1);
-        string expected = JsonSerializer.Serialize(result);
-        string actual = JsonSerializer.Serialize(productsWithInBudget);
-
+        var result = shopManager.GetProductsWithInBudget(budget, shop1); 
+        var options = new JsonSerializerOptions
+        {
+            IncludeFields = true,
+        };
+        string expected = JsonSerializer.Serialize(result,options);
+        string actual = JsonSerializer.Serialize(productsWithInBudget,options);
+        
         //Assert
         Assert.AreEqual(expected, actual);
     }
