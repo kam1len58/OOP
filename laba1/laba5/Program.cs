@@ -1,4 +1,6 @@
-﻿namespace laba5;
+﻿using System;
+
+namespace laba5;
 
 class Program
 {
@@ -37,6 +39,17 @@ class Program
             {
                 student.Study();
             }
+        }
+
+        foreach (var person1 in people)
+        {
+            var result = person1 switch
+            {
+                (Teacher teacher) => teacher.Explain(),
+                (Student student) => student.Study(),
+                _ => "person is not Teacher,Student "
+            };
+            Console.WriteLine(result);
         }
 
     }

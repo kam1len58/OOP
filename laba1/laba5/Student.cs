@@ -2,9 +2,9 @@
 
 class Student : Person
 {
-    public void Study()
+    public string Study()
     {
-        Console.WriteLine("Study");
+        return "Study";
     }
 
     public Student(string name):base(name)
