@@ -7,8 +7,7 @@ class Program
         Shop shop1 = new Shop(1, "Магнит", "пр. Мира, 20");
         Shop shop2 = new Shop(2, "Пятерочка", "ул. Ершова, 50");
         Shop shop3 = new Shop(3, "Перекрёсток", "ул. Авангардная, 40");
-        ShopsManager shopsManager = new ShopsManager();
-        shopsManager.shops = [shop1, shop2, shop3];
+        ShopManager shopManager = new ShopManager();
 
         shop1.DeliveryBatchProducts
         (
@@ -23,15 +22,11 @@ class Program
             (new Product(9, "СОЛЬ"), 50, 30),
             (new Product(10, "КАРТОФЕЛЬ"), 200, 25)
         );
-        int budget = 100;
-        var result = shopsManager.GetProductsWithInBudget(budget, shopsManager.shops);
+        int budget = 1000;
+        var result = shopManager.GetProductsWithInBudget(budget, shop1);
         foreach (var product in result)
         {
             Console.WriteLine($"На {budget} рублей вы можете купить {product.NumberOfProducts} шт. {product.Product.Name} в магазине {product.Shop.Name}\n");
-        }
-        if(result.Count==0)
-        {
-            Console.WriteLine("Покупка невозможна из-за нехватки продуктов или денег");
         }
     }
 }
