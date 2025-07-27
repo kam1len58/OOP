@@ -2,5 +2,10 @@
 
 class BigPhotoBookInit : PhotoBook
 {
-    public required int Page { get; init; }
+    public int Page { get; private set; }
+
+    public BigPhotoBookInit(int page)
+    {
+        Page = page;
+    }
 }
