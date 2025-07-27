@@ -6,7 +6,7 @@ class Car : IVehiculo
 
     public Car(int fuelLevel)
     {
-        FuelLevel = fuelLevel;
+       FuelLevel=fuelLevel;
     }
 
     public void Drive()
@@ -19,7 +19,7 @@ class Car : IVehiculo
 
     public bool Refuel(int fuelLevel)
     {
-        FuelLevel++;
+        fuelLevel++;
         return true;
     }
 }

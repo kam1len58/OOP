@@ -4,7 +4,6 @@ class Program
 {
     static void Main(string[] args)
     {
-        Car car = new Car(0);
         int fuelLevel;
         do
         {
@@ -12,8 +11,8 @@ class Program
             fuelLevel = Convert.ToInt32(Console.ReadLine());
             Console.Clear();
         }
-        while (fuelLevel == 0);
-
+        while (fuelLevel <= 0);
+        Car car = new Car(fuelLevel);
         bool fuelAmount = car.Refuel(fuelLevel);
 
         car.Drive();
