@@ -1,4 +1,4 @@
-﻿namespace laba8;
+﻿namespace WorkEight;
 
 class Dog : Animal
 {

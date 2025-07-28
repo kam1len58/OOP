@@ -1,19 +1,8 @@
-﻿namespace laba8;
+﻿namespace WorkEight;
 
 abstract class Animal
 {
-    public string? Name { get; set; }
-
-    public string SetName(string name)
-    {
-        Name = name;
-        return Name;
-    }
-
-    public string? GetName()
-    {
-        return Name;
-    }
+    public required string Name { get; init; }
 
     public abstract void Eat();
 }

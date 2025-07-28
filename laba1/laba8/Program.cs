@@ -1,19 +1,18 @@
-﻿namespace laba8;
+﻿namespace WorkEight;
 
 class Program
 {
     static void Main(string[] args)
     {
-        Dog dog = new Dog();
+        Dog dog;
         string? name;
         do
         {
-            name = Console.ReadLine();
+            name = Console.ReadLine()!;
+            dog = new Dog { Name = name };
             Console.Clear();
         }
         while (name == null || name.Length == 0);
-
-        dog.Name = name;
         Console.WriteLine(dog.Name);
         dog.Eat();
     }
