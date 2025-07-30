@@ -8,7 +8,7 @@ class Program
         Shop shop2 = new Shop(2, "Пятерочка", "ул. Ершова, 50");
         Shop shop3 = new Shop(3, "Перекрёсток", "ул. Авангардная, 40");
         ShopsManager shopsManager = new ShopsManager();
-        shopsManager.shops = [shop1, shop2, shop3];
+        shopsManager.shops = new() { shop1, shop2, shop3 };
 
         shop1.DeliveryBatchProducts
         (
@@ -36,7 +36,6 @@ class Program
             (new Product(8, "САХАР"), 80, 90),
             (new Product(9, "СОЛЬ"), 30, 20),
             (new Product(10, "КАРТОФЕЛЬ"), 170, 45)
-
         );
 
         shop3.DeliveryBatchProducts
@@ -53,7 +52,7 @@ class Program
             (new Product(10, "КАРТОФЕЛЬ"), 240, 55)
         );
 
-        var shops = shopsManager.SearchCheapestShops(10, shopsManager.shops);
+        var shops = shopsManager.SearchCheapestShops(5);
         if (shops.Count == 0)
         {
             Console.WriteLine("Данный товар отсутствует");

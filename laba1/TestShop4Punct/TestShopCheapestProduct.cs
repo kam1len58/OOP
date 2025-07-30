@@ -1,5 +1,6 @@
-﻿namespace TestShop4Punct;
+﻿namespace TestWorkShopSearchCheapestProduct;
 using WorkShop;
+using System.Text.Json;
 
 [TestClass]
 public class TestShopCheapestProduct
@@ -11,7 +12,8 @@ public class TestShopCheapestProduct
         Shop shop1 = new Shop(1, "Магнит", "пр. Мира, 20");
         Shop shop2 = new Shop(2, "Пятерочка", "ул. Ершова, 50");
         Shop shop3 = new Shop(3, "Перекрёсток", "ул. Авангардная, 40");
-        ShopManager shopManager = new ShopManager();
+        ShopsManager shopsManager = new ShopsManager();
+        shopsManager.shops = new() { shop1, shop2, shop3 };
         (Product Product, int Quanity, int Price)[] batchProducts1 =
         [
             (new Product(1, "ХЛЕБ"), 80, 45),
@@ -52,20 +54,26 @@ public class TestShopCheapestProduct
             (new Product(10, "КАРТОФЕЛЬ"), 240, 15)
 
         ];
-        List<(Shop Shop, string ProductName)> cheapestProduct = new()
+        List<(Shop Shop, Product Product)> cheapestProduct = new()
         {
-            (shop1,"МЯСО"),
-            (shop3,"МЯСО")
+            (shop1,new Product(5,"МЯСО")),
+            (shop3,new Product(5,"МЯСО"))
         };
 
         //Act
         shop1.DeliveryBatchProducts(batchProducts1);
         shop2.DeliveryBatchProducts(batchProducts2);
         shop3.DeliveryBatchProducts(batchProducts3);
-        var result = shopManager.SearchCheapestShops(5, shop1, shop2, shop3);
+        var result = shopsManager.SearchCheapestShops(5);
+        var options = new JsonSerializerOptions
+        {
+            IncludeFields = true,
+        };
+        string expected = JsonSerializer.Serialize(cheapestProduct, options);
+        string actual = JsonSerializer.Serialize(result, options);
 
         //Assert
-        CollectionAssert.AreEqual(result, cheapestProduct);
+        Assert.AreEqual(expected, actual);
     }
 }
 

@@ -1,67 +1,35 @@
 ﻿namespace WorkShop;
+using System.Linq;
 
 public class ShopsManager
 {
-    Shop? shop1;
-    Shop? shop2;
-    Shop? shop3;
-    public Shop[]? shops;
+    public List<Shop> shops = new();
 
-    public List<(int ProductCode,Shop Shop, Product Product)> SearchProduct(Shop shop, int productCode)
-    {
-        List<(int ProductCode, Shop Shop, Product Product)> product = new();
-        string? productName = GetProductByCode(shop, productCode);
-        if (productName == null)
-        {
-            return product;
-        }
-
-        if(shop.productSet.TryGetValue(productCode, out var value))
-        {
-            if(productCode==value.Product.Code)
-            {
-                product.Add((value.Product.Code,shop,value.Product));
-            }
-        }
-        return product;
-    }
-
-    public string? GetProductByCode(Shop shop, int productCode)
-    {
-        if(shop.productSet.TryGetValue(productCode, out var product))
-        {
-            if (productCode == product.Product.Code)
-            {
-                return product.Product.Name;
-            }
-        }
-        return null;
-    }
-
-    public List<(Shop Shop, Product Product)> SearchCheapestShops(int productCode, Shop[] shops)
+    public List<(Shop Shop, Product Product)> SearchCheapestShops(int productCode)
     {
         List<(Shop Shop, Product Product)> cheapestShops = new();
-        int price = int.MaxValue;
-        foreach (var shop in shops)
+        var productsByCode = SearchProductByCodeInShops(productCode, shops);
+        if (productsByCode.Count > 0)
         {
-            var concreteProduct = SearchProduct(shop, productCode);
-            foreach (var item in concreteProduct)
+            int minProductPrice = productsByCode.Min(price => price.ProductPrice);
+            foreach (var shop in productsByCode)
             {
-                if (shop.productSet.TryGetValue(item.ProductCode, out var product))
-                {
-                    if (product.Price < price)
-                    {
-                        cheapestShops.Clear();
-                        price = product.Price;
-                        cheapestShops.Add((shop, product.Product));
-                    }
-                    else if (product.Price == price)
-                    {
-                        cheapestShops.Add((shop, product.Product));
-                    }
-                }
+                if (shop.ProductPrice == minProductPrice)
+                    cheapestShops.Add((shop.Shop, shop.Product));
             }
+            return cheapestShops;
         }
         return cheapestShops;
+    }
+
+    private List<(Shop Shop, Product Product, int ProductPrice)> SearchProductByCodeInShops(int productCode, List<Shop> shops)
+    {
+        List<(Shop Shop, Product Product, int ProductPrice)> products = new();
+        foreach (var shop in shops)
+        {
+            if (shop.productSet.TryGetValue(productCode, out var product))
+                products.Add((shop, product.Product, product.Price));
+        }
+        return products;
     }
 }
