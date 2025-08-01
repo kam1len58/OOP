@@ -3,9 +3,9 @@
 public abstract class Shape
 {
     Location location;
-    protected Shape()
+    protected Shape(Location loc)
     {
-        location=new Location();
+        location = loc;
     }
 
     public override string ToString()

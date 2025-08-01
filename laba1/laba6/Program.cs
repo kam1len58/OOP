@@ -4,9 +4,10 @@ class Program
 {
     static void Main(string[] args)
     {
-        Circle circle = new Circle(6.7);
+        Location location = new(5, 6);
+        Circle circle = new Circle(location, 6.7);
         Console.WriteLine($"Периметр круга:{circle.Perimeter()}\nПлощадь круга:{circle.Area()}\n");
-        Rectangle rectangle = new Rectangle(7.4, 9.2);
+        Rectangle rectangle = new Rectangle(location);
         Console.WriteLine($"Периметр прямоугольника:{rectangle.Perimeter()}\nПлощадь прямоугольника:{rectangle.Area()}");
     }
 }

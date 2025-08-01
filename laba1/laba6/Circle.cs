@@ -3,7 +3,7 @@ class Circle : Shape
 {
     protected double radius;
 
-    public Circle(double radius)
+    public Circle(Location loc,double radius):base(loc)
     {
         this.radius = radius;
     }

@@ -4,13 +4,11 @@ class Rectangle : Shape
 {
     protected double Width;
     protected double Height;
-
-    public Rectangle(double x, double y)
+    public Rectangle(Location location) : base(location)
     {
-        Width = x;
-        Height = y;
+        Width = location.X;
+        Height = location.Y;
     }
-
     public override double Area()
     {
         return Width * Height;
