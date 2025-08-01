@@ -1,7 +1,7 @@
-﻿namespace laba6;
+﻿namespace WorkSix;
 
-class Location
+public class Location
 {
-    private double x;
-    private double y;
+    public double x;
+    public double y;
 }

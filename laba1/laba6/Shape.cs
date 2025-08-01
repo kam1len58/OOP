@@ -1,8 +1,12 @@
-﻿namespace laba6;
+﻿namespace WorkSix;
 
-abstract class Shape
+public abstract class Shape
 {
-    protected Location location = new Location();
+    Location location;
+    protected Shape()
+    {
+        location=new Location();
+    }
 
     public override string ToString()
     {

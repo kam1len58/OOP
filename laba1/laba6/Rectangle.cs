@@ -1,4 +1,4 @@
-﻿namespace laba6;
+﻿namespace WorkSix;
 
 class Rectangle : Shape
 {
