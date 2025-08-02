@@ -2,7 +2,7 @@
 
 public abstract class Shape
 {
-    public Location location;
+    public readonly Location location;
 
     public Shape(Location loc)
     {
