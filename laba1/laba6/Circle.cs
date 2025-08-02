@@ -1,7 +1,7 @@
 ﻿namespace WorkSix;
-class Circle : Shape
+public class Circle : Shape
 {
-    protected double radius;
+    private double radius;
 
     public Circle(Location loc,double radius):base(loc)
     {

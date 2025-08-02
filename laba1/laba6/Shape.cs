@@ -2,8 +2,9 @@
 
 public abstract class Shape
 {
-    Location location;
-    protected Shape(Location loc)
+    public Location location;
+
+    public Shape(Location loc)
     {
         location = loc;
     }
