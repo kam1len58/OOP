@@ -5,19 +5,28 @@ public class ShopsManager
 {
     public List<Shop> shops = new();
 
-    public List<(Shop Shop, Product Product)> SearchCheapestShops(int productCode)
+    public List<(List<Shop> Shop, Product Product)> SearchCheapestShops(int productCode)
     {
-        List<(Shop Shop, Product Product)> cheapestShops = new();
+        List<(List<Shop> Shop, Product Product)> cheapestShops = new();
         var productsByCode = SearchProductByCodeInShops(productCode, shops);
         if (productsByCode.Count > 0)
         {
-            int minProductPrice = productsByCode.Min(price => price.ProductPrice);
+            int minProductPrice = productsByCode[0].ProductPrice;
+            List<Shop> shops = new();
             foreach (var shop in productsByCode)
             {
-                if (shop.ProductPrice == minProductPrice)
-                    cheapestShops.Add((shop.Shop, shop.Product));
+                if (shop.ProductPrice < minProductPrice)
+                {
+                    minProductPrice = shop.ProductPrice;
+                    shops.Clear();
+                    shops.Add(shop.Shop);
+                }
+                else if (shop.ProductPrice == minProductPrice)
+                {
+                    shops.Add(shop.Shop);
+                }
             }
-            return cheapestShops;
+            cheapestShops.Add((shops, productsByCode.First().Product));
         }
         return cheapestShops;
     }

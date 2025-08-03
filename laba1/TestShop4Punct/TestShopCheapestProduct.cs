@@ -54,10 +54,10 @@ public class TestShopCheapestProduct
             (new Product(10, "КАРТОФЕЛЬ"), 240, 15)
 
         ];
-        List<(Shop Shop, Product Product)> cheapestProduct = new()
+        List<Shop> shops = new() { shop1,shop3 };
+        List<(List<Shop> Shop, Product Product)> cheapestProduct = new()
         {
-            (shop1,new Product(5,"МЯСО")),
-            (shop3,new Product(5,"МЯСО"))
+            (shops,new Product(5, "МЯСО"))
         };
 
         //Act

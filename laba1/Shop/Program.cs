@@ -52,14 +52,17 @@ class Program
             (new Product(10, "КАРТОФЕЛЬ"), 240, 55)
         );
 
-        var shops = shopsManager.SearchCheapestShops(5);
+        var shops = shopsManager.SearchCheapestShops(10);
         if (shops.Count == 0)
         {
             Console.WriteLine("Данный товар отсутствует");
         }
         foreach (var item in shops)
         {
-            Console.WriteLine($"Самый дешёвый(ая/ое) {item.Product.Name} в магазине {item.Shop.Name}, код магазина {item.Shop.Code}");
+            foreach(var point in item.Shop)
+            {
+                Console.WriteLine($"Самый дешёвый(ая/ое) {item.Product.Name} в магазине {point.Name}, код магазина {point.Code}");
+            }
         }
     }
 }
