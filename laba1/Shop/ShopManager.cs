@@ -5,6 +5,11 @@ public class ShopsManager
 {
     public List<Shop> shops = new();
 
+    public ShopsManager(List<Shop> shops)
+    {
+        this.shops = shops;
+    }
+
     public List<(List<Shop> Shop, Product Product)> SearchCheapestShops(int productCode)
     {
         List<(List<Shop> Shop, Product Product)> cheapestShops = new();

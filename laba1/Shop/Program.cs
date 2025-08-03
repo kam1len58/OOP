@@ -4,14 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        Shop shop1 = new Shop(1, "Магнит", "пр. Мира, 20");
-        Shop shop2 = new Shop(2, "Пятерочка", "ул. Ершова, 50");
-        Shop shop3 = new Shop(3, "Перекрёсток", "ул. Авангардная, 40");
-        ShopsManager shopsManager = new ShopsManager();
-        shopsManager.shops = new() { shop1, shop2, shop3 };
-
-        shop1.DeliveryBatchProducts
-        (
+        Shop shop1 = new Shop(1, "Магнит", "пр. Мира, 20",
             (new Product(1, "ХЛЕБ"), 80, 45),
             (new Product(2, "МОЛОКО"), 30, 85),
             (new Product(3, "РИС"), 40, 120),
@@ -23,9 +16,7 @@ class Program
             (new Product(9, "СОЛЬ"), 50, 30),
             (new Product(10, "КАРТОФЕЛЬ"), 200, 45)
         );
-
-        shop2.DeliveryBatchProducts
-        (
+        Shop shop2 = new Shop(2, "Пятерочка", "ул. Ершова, 50", 
             (new Product(1, "ХЛЕБ"), 35, 40),
             (new Product(2, "МОЛОКО"), 25, 95),
             (new Product(3, "РИС"), 30, 100),
@@ -38,8 +29,7 @@ class Program
             (new Product(10, "КАРТОФЕЛЬ"), 170, 45)
         );
 
-        shop3.DeliveryBatchProducts
-        (
+        Shop shop3 = new Shop(3, "Перекрёсток", "ул. Авангардная, 40", 
             (new Product(1, "ХЛЕБ"), 60, 50),
             (new Product(2, "МОЛОКО"), 40, 95),
             (new Product(3, "РИС"), 50, 90),
@@ -51,7 +41,7 @@ class Program
             (new Product(9, "СОЛЬ"), 40, 35),
             (new Product(10, "КАРТОФЕЛЬ"), 240, 55)
         );
-
+        ShopsManager shopsManager = new ShopsManager(new() { shop1, shop2, shop3 });
         var shops = shopsManager.SearchCheapestShops(10);
         if (shops.Count == 0)
         {

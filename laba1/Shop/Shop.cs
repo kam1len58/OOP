@@ -6,11 +6,12 @@ public class Shop
     public string Name { get; }
     public string Address { get; }
 
-    public Shop(int code, string name, string address)
+    public Shop(int code, string name, string address, params (Product Product, int Quanity, int Price)[] products)
     {
         Code = code;
         Name = name;
         Address = address;
+        DeliveryBatchProducts(products);
     }
 
     public Dictionary<int, (Product Product, int Quanity, int Price)> productSet = new();

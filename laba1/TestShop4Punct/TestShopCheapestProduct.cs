@@ -9,13 +9,7 @@ public class TestShopCheapestProduct
     public void SearchCheapestProductTests()
     {
         //Arrange
-        Shop shop1 = new Shop(1, "Магнит", "пр. Мира, 20");
-        Shop shop2 = new Shop(2, "Пятерочка", "ул. Ершова, 50");
-        Shop shop3 = new Shop(3, "Перекрёсток", "ул. Авангардная, 40");
-        ShopsManager shopsManager = new ShopsManager();
-        shopsManager.shops = new() { shop1, shop2, shop3 };
-        (Product Product, int Quanity, int Price)[] batchProducts1 =
-        [
+        Shop shop1 = new Shop(1, "Магнит", "пр. Мира, 20",
             (new Product(1, "ХЛЕБ"), 80, 45),
             (new Product(2, "МОЛОКО"), 30, 85),
             (new Product(3, "РИС"), 40, 120),
@@ -25,11 +19,10 @@ public class TestShopCheapestProduct
             (new Product(7, "ЯЙЦА"), 100, 90),
             (new Product(8, "САХАР"), 60, 60),
             (new Product(9, "СОЛЬ"), 50, 30),
-            (new Product(10, "КАРТОФЕЛЬ"), 200, 25),
-        ];
-        (Product Product, int Quanity, int Price)[] batchProducts2 =
-        [
-           (new Product(1, "ХЛЕБ"), 35, 45),
+            (new Product(10, "КАРТОФЕЛЬ"), 200, 25)
+        );
+        Shop shop2 = new Shop(2, "Пятерочка", "ул. Ершова, 50",
+            (new Product(1, "ХЛЕБ"), 35, 45),
             (new Product(2, "МОЛОКО"), 25, 95),
             (new Product(3, "РИС"), 30, 100),
             (new Product(4, "МАСЛО"), 35, 120),
@@ -39,9 +32,8 @@ public class TestShopCheapestProduct
             (new Product(8, "САХАР"), 80, 90),
             (new Product(9, "СОЛЬ"), 30, 20),
             (new Product(10, "КАРТОФЕЛЬ"), 170, 45)
-        ];
-        (Product Product, int Quanity, int Price)[] batchProducts3 =
-        [
+        );
+        Shop shop3 = new Shop(3, "Перекрёсток", "ул. Авангардная, 40",
             (new Product(1, "ХЛЕБ"), 60, 45),
             (new Product(2, "МОЛОКО"), 40, 95),
             (new Product(3, "РИС"), 50, 90),
@@ -52,8 +44,8 @@ public class TestShopCheapestProduct
             (new Product(8, "САХАР"), 100, 20),
             (new Product(9, "СОЛЬ"), 40, 35),
             (new Product(10, "КАРТОФЕЛЬ"), 240, 15)
-
-        ];
+        );
+        ShopsManager shopsManager = new ShopsManager(new() { shop1, shop2, shop3 });
         List<Shop> shops = new() { shop1,shop3 };
         List<(List<Shop> Shop, Product Product)> cheapestProduct = new()
         {
@@ -61,9 +53,6 @@ public class TestShopCheapestProduct
         };
 
         //Act
-        shop1.DeliveryBatchProducts(batchProducts1);
-        shop2.DeliveryBatchProducts(batchProducts2);
-        shop3.DeliveryBatchProducts(batchProducts3);
         var result = shopsManager.SearchCheapestShops(5);
         var options = new JsonSerializerOptions
         {
