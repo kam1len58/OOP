@@ -43,15 +43,13 @@ class Program
         );
         ShopsManager shopsManager = new ShopsManager(new() { shop1, shop2, shop3 });
         var shops = shopsManager.SearchCheapestShops(10);
-        if (shops.Count == 0)
-        {
+        if (shops.Shop == null)
             Console.WriteLine("Данный товар отсутствует");
-        }
-        foreach (var item in shops)
+        else
         {
-            foreach(var point in item.Shop)
+            foreach (var item in shops.Shop)
             {
-                Console.WriteLine($"Самый дешёвый(ая/ое) {item.Product.Name} в магазине {point.Name}, код магазина {point.Code}");
+                Console.WriteLine($"Самый дешёвый(ая/ое) {shops.Product.Name} в магазине {item.Name}, код магазина {item.Code}");
             }
         }
     }

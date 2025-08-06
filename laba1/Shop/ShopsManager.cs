@@ -3,35 +3,35 @@ using System.Linq;
 
 public class ShopsManager
 {
-    public List<Shop> shops = new();
+    private List<Shop> shops = new();
 
     public ShopsManager(List<Shop> shops)
     {
         this.shops = shops;
     }
 
-    public List<(List<Shop> Shop, Product Product)> SearchCheapestShops(int productCode)
+    public (List<Shop> Shop, Product Product) SearchCheapestShops(int productCode)
     {
-        List<(List<Shop> Shop, Product Product)> cheapestShops = new();
+        (List<Shop> Shop, Product Product) cheapestShops = new();
         var productsByCode = SearchProductByCodeInShops(productCode, shops);
         if (productsByCode.Count > 0)
         {
             int minProductPrice = productsByCode[0].ProductPrice;
             List<Shop> shops = new();
-            foreach (var shop in productsByCode)
+            foreach (var product in productsByCode)
             {
-                if (shop.ProductPrice < minProductPrice)
+                if (product.ProductPrice < minProductPrice)
                 {
-                    minProductPrice = shop.ProductPrice;
+                    minProductPrice = product.ProductPrice;
                     shops.Clear();
-                    shops.Add(shop.Shop);
+                    shops.Add(product.Shop);
                 }
-                else if (shop.ProductPrice == minProductPrice)
+                else if (product.ProductPrice == minProductPrice)
                 {
-                    shops.Add(shop.Shop);
+                    shops.Add(product.Shop);
                 }
             }
-            cheapestShops.Add((shops, productsByCode.First().Product));
+            cheapestShops = (shops, productsByCode.First().Product);
         }
         return cheapestShops;
     }
@@ -41,7 +41,7 @@ public class ShopsManager
         List<(Shop Shop, Product Product, int ProductPrice)> products = new();
         foreach (var shop in shops)
         {
-            if (shop.productSet.TryGetValue(productCode, out var product))
+            if (shop.ProductSet.TryGetValue(productCode, out var product))
                 products.Add((shop, product.Product, product.Price));
         }
         return products;
