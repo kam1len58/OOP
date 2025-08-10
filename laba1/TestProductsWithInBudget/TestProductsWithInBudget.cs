@@ -11,14 +11,7 @@ public class TestProductsWithInBudget
     public void GetProductsWithInBudgetTests()
     {
         //Arrange
-        Shop shop1 = new Shop(1, "Магнит", "пр. Мира, 20");
-        Shop shop2 = new Shop(2, "Пятерочка", "ул. Ершова, 50");
-        Shop shop3 = new Shop(3, "Перекрёсток", "ул. Авангардная, 40");
-        ShopsManager shopManager = new ShopsManager();
-        shopManager.shops=[shop1,shop2,shop3];
-
-        (Product Product, int Quanity, int Price)[] batchProducts =
-        [
+        Shop shop1 = new Shop(1, "Магнит", "пр. Мира, 20",
             (new Product(1, "ХЛЕБ"), 80, 45),
             (new Product(2, "МОЛОКО"), 30, 85),
             (new Product(3, "РИС"), 40, 120),
@@ -29,7 +22,10 @@ public class TestProductsWithInBudget
             (new Product(8, "САХАР"), 60, 60),
             (new Product(9, "СОЛЬ"), 50, 30),
             (new Product(10, "КАРТОФЕЛЬ"), 200, 25)
-        ];
+        );
+        Shop shop2 = new Shop(2, "Пятерочка", "ул. Ершова, 50");
+        Shop shop3 = new Shop(3, "Перекрёсток", "ул. Авангардная, 40");
+        ShopsManager shopManager = new ShopsManager(new() { shop1, shop2, shop3 });
         int budget = 1000;
         List<(Shop Shop, Product Product, int NumberOfProducts)> productsWithInBudget = new()
         {
@@ -46,8 +42,7 @@ public class TestProductsWithInBudget
         };
 
         //Act
-        shop1.DeliveryBatchProducts(batchProducts);
-        var result = shopManager.GetProductsWithInBudget(budget, shopManager.shops); 
+        var result = shopManager.GetProductsWithInBudget(budget); 
         var options = new JsonSerializerOptions
         {
             IncludeFields = true,

@@ -5,15 +5,24 @@ public class Shop
     public int Code { get; }
     public string Name { get; }
     public string Address { get; }
+    public Dictionary<int, (Product Product, int Quanity, int Price)> ProductSet
+    {
+        get { return productSet; }
+        set { productSet = value; }
+    }
 
-    public Shop(int code, string name, string address)
+    public Shop(int code, string name, string address, params (Product Product, int Quanity, int Price)[] products)
     {
         Code = code;
         Name = name;
         Address = address;
+        foreach (var product in products)
+        {
+            productSet[product.Product.Code] = product;
+        }
     }
 
-    public Dictionary<int, (Product Product, int Quanity, int Price)> productSet = new();
+    private Dictionary<int, (Product Product, int Quanity, int Price)> productSet = new();
 
     public void DeliveryBatchProducts(params (Product Product, int Quanity, int Price)[] products)
      {

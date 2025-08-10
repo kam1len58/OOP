@@ -2,12 +2,14 @@
 
 public class ShopsManager
 {
-    Shop? shop1;
-    Shop? shop2;
-    Shop? shop3;
-    public Shop[]? shops;
+    private List<Shop> shops;
 
-    public List<(Shop Shop, Product Product, int NumberOfProducts)> GetProductsWithInBudget(int budget, Shop[] shops)
+    public ShopsManager(List<Shop> shops)
+    {
+        this.shops = shops;
+    }
+
+    public List<(Shop Shop, Product Product, int NumberOfProducts)> GetProductsWithInBudget(int budget)
     {
         List<(Shop Shop, Product Product, int NumberOfProducts)> productsWithInBudget = new();
         foreach (var shop in shops)
@@ -27,7 +29,7 @@ public class ShopsManager
     private List<(Product Product, int NumberOfProducts)> SearchProductByBudget(Shop shop, int budget)
     {
         List<(Product Product, int NumberOfProducts)>? products = new();
-        foreach (var item in shop.productSet)
+        foreach (var item in shop.ProductSet)
         {
             if (budget >= item.Value.Price)
             {
