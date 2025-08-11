@@ -1,18 +1,26 @@
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
+VisualStudioVersion = 17.13.35913.81
 VisualStudioVersion = 17.13.35913.81
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "laba1", "laba1\laba1.csproj", "{F077A0E2-0F5C-44B8-8D00-8769FE09A3CE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop", "Shop\Shop.csproj", "{06899CE1-3082-4EE5-AA64-1031C1C5FB3C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestShopSearchCheapestShops", "TestShop4Punct\TestShopSearchCheapestShops.csproj", "{0C28DD5D-7EE3-4554-9C96-EBA5CC3864B2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestShop4Punct", "TestShop4Punct\TestShop4Punct.csproj", "{0C28DD5D-7EE3-4554-9C96-EBA5CC3864B2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkEight", "laba8\WorkEight.csproj", "{C960FAFA-4409-45A5-8287-D6F6E204D85F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "laba7", "laba7\laba7.csproj", "{EC4132DD-88EA-43D1-8EB9-01938EE63A2D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "laba5", "laba5\laba5.csproj", "{BDD122A0-EEB7-498D-88C0-F9028C9524C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop", "Shop\Shop.csproj", "{06899CE1-3082-4EE5-AA64-1031C1C5FB3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopTest", "ShopTest\ShopTest.csproj", "{806F405B-6EDF-4F63-A393-6AF26AE00FC1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop", "Shop\Shop.csproj", "{06899CE1-3082-4EE5-AA64-1031C1C5FB3C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopTest", "ShopTest\ShopTest.csproj", "{806F405B-6EDF-4F63-A393-6AF26AE00FC1}"
 EndProject
