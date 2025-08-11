@@ -1,12 +1,12 @@
-﻿namespace TestWorkShopSearchCheapestProduct;
+﻿namespace TestWorkShopSearchCheapestShops;
 using WorkShop;
 using System.Text.Json;
 
 [TestClass]
-public class TestShopCheapestProduct
+public class TestShopSearchCheapestShops
 {
     [TestMethod]
-    public void SearchCheapestProductTests()
+    public void SearchCheapestShopsTests()
     {
         //Arrange
         Shop shop1 = new Shop(1, "Магнит", "пр. Мира, 20",

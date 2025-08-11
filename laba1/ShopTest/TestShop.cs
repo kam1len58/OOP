@@ -72,7 +72,7 @@ public class DeliveryBatchProductsTests
         {
             IncludeFields = true,
         };
-        string actualJson = JsonSerializer.Serialize(shop.productSet, options);
+        string actualJson = JsonSerializer.Serialize(shop.Products, options);
         string expectedJson = JsonSerializer.Serialize(batchAfterDelivery, options);
 
         //Assert
