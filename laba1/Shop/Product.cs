@@ -1,6 +1,6 @@
-﻿namespace Shop;
+﻿namespace WorkShop;
 
-class Product
+public class Product
 {
     public int Code { get; }
 
