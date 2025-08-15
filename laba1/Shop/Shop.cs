@@ -2,15 +2,15 @@
 
 public class Shop
 {
-    private Dictionary<int, (Product Product, int Quanity, int Price)> _productSet = new();
+    private readonly Dictionary<int, (Product Product, int Quanity, int Price)> _products = new();
     public int Code { get; }
     public string Name { get; }
     public string Address { get; }
 
 
-    public Dictionary<int, (Product Product, int Quanity, int Price)> Products
+    public IReadOnlyDictionary<int, (Product Product, int Quanity, int Price)> Products
     {
-        get { return _productSet; }
+         get { return _products; }
     }
 
     public Shop(int code, string name, string address, params (Product Product, int Quanity, int Price)[] products)
@@ -20,7 +20,7 @@ public class Shop
         Address = address;
         foreach (var product in products)
         {
-            _productSet[product.Product.Code] = product;
+            _products[product.Product.Code] = product;
         }
     }
 
@@ -28,13 +28,13 @@ public class Shop
     {
         foreach (var product in products)
         {
-            if (_productSet.TryGetValue(product.Product.Code, out (Product Product, int Quanity, int Price) value))
+            if (_products.TryGetValue(product.Product.Code, out (Product Product, int Quanity, int Price) value))
             {
-                _productSet[product.Product.Code] = (product.Product, product.Quanity + value.Quanity, product.Price);
+                _products[product.Product.Code] = (product.Product, product.Quanity + value.Quanity, product.Price);
             }
             else
             {
-                _productSet[product.Product.Code] = (product.Product, product.Quanity, product.Price);
+                _products[product.Product.Code] = (product.Product, product.Quanity, product.Price);
             }
         }
     }

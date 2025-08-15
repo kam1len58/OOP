@@ -12,7 +12,7 @@ public class ShopsManager
 
     public (List<Shop> Shop, Product Product)? SearchCheapestShops(int productCode)
     {
-        (List<Shop> Shop, Product Product) cheapestShops = new();
+        (List<Shop> Shop, Product Product)? cheapestShops = null;
         var productsByCode = SearchProductByCodeInShops(productCode);
         if (productsByCode.Count == 0)
             return null;
