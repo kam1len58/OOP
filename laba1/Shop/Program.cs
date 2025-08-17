@@ -41,8 +41,7 @@ class Program
             (new Product(9, "СОЛЬ"), 40, 35),
             (new Product(10, "КАРТОФЕЛЬ"), 240, 55)
         );
-        ShopsManager shopsManager = new ShopsManager(new() { shop1, shop2, shop3 });
-
+        ShopsManager shopsManager = new ShopsManager(new() { { 1, shop1 }, { 2, shop2 }, { 3, shop3 } });
         int budget = 1000;
         var result = shopsManager.GetProductsWithInBudget(budget, 2);
         foreach (var product in result)

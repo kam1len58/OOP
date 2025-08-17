@@ -48,7 +48,7 @@ public class TestProductsWithInBudget
             (new Product(9, "СОЛЬ"), 40, 35),
             (new Product(10, "КАРТОФЕЛЬ"), 240, 55)
         );
-        ShopsManager shopManager = new ShopsManager(new() { shop1, shop2, shop3 });
+        ShopsManager shopManager = new ShopsManager(new() { { 1, shop1 }, { 2, shop2 }, { 3, shop3 } });
         int budget = 1000;
         List<(Shop Shop, Product Product, int NumberOfProducts)> productsWithInBudget = new()
         {

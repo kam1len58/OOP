@@ -2,9 +2,9 @@
 
 public class ShopsManager
 {
-    private List<Shop> shops;
+    private Dictionary<int,Shop> shops;
 
-    public ShopsManager(List<Shop> shops)
+    public ShopsManager(Dictionary<int, Shop> shops)
     {
         this.shops = shops;
     }
@@ -12,10 +12,7 @@ public class ShopsManager
     public List<(Shop Shop, Product Product, int NumberOfProducts)> GetProductsWithInBudget(int budget, int shopCode)
     {
         List<(Shop Shop, Product Product, int NumberOfProducts)> productsWithInBudget = new();
-        foreach (var shop in shops)
-        {
-            if (shop.Code == shopCode)
-            {
+        if(shops.TryGetValue(shopCode,out var shop)) {
                 var products = Shop.SearchProductByBudget(shop, budget);
                 foreach (var product in products)
                 {
@@ -25,7 +22,7 @@ public class ShopsManager
                     }
                 }
             }
-        }
+
         return productsWithInBudget;
     }
 }
