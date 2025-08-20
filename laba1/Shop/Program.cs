@@ -16,6 +16,7 @@ class Program
             (new Product(9, "СОЛЬ"), 50, 30),
             (new Product(10, "КАРТОФЕЛЬ"), 200, 25)
         );
+
         Shop shop2 = new Shop(2, "Пятерочка", "ул. Ершова, 50",
            (new Product(1, "ХЛЕБ"), 35, 40),
            (new Product(2, "МОЛОКО"), 25, 95),
@@ -43,7 +44,7 @@ class Program
         );
         ShopsManager shopManager = new ShopsManager(new() { shop1, shop2, shop3 });
         Dictionary<int, int> batchOfProducts = new() { { 1, 10 }, { 2, 10 }, { 3, 8 } };
-        var result = shopManager.BuyBatchOfProducts(1, batchOfProducts);
+        var result = shopManager.BuyBatchOfProducts(2, batchOfProducts);
         if (result == null)
             Console.WriteLine($"Покупка невозможна из-за нехватки продуктов");
         else

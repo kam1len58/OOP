@@ -49,7 +49,7 @@ public sealed class TestTotalBranchPrice
         );
         ShopsManager shopsManager = new ShopsManager(new() { shop1, shop2, shop3 });
         int shopCode = 1;
-        Dictionary<int, int> batchOfProducts = new() { { 1, 10 }, { 2, 7 }, { 3, 3 }, { 4, 3 }, { 5, 9 }, { 6, 1 }, { 7, 2 }, { 8, 4 }, { 9, 6 }, { 10, 2000 } };
+        Dictionary<int, int> batchOfProducts = new() { { 1, 10 }, { 2, 7 }, { 3, 3 }, { 4, 3 }, { 5, 9 }, { 6, 1 }, { 7, 2 }, { 8, 4 }, { 9, 6 }, { 10, 20 } };
         (Shop Shop, int TotalPriceBatch)? batchProductsPrice = (shop1, 6855);
 
         //Act

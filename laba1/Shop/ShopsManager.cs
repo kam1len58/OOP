@@ -10,7 +10,7 @@ public class ShopsManager
     }
     public (Shop Shop, int TotalPriceBatch)? BuyBatchOfProducts(int shopCode, Dictionary<int, int> batchOfProducts)
     {
-        (Shop Shop, int TotalPriceBatch)? totalBatchPrice = new();
+        (Shop Shop, int TotalPriceBatch)? batch = null;
         int totalPriceBatch = 0;
         foreach (var shop in _shops)
         {
@@ -23,17 +23,17 @@ public class ShopsManager
                         if (product.Value.Quanity >= Quantity)
                         {
                             totalPriceBatch += GetProductPriceByCode(shop, product.Key) * Quantity;
-                            totalBatchPrice = (shop, totalPriceBatch);
+                            batch = (shop, totalPriceBatch);
                         }
                         else
                         {
-                            return null;
+                            return batch;
                         }
                     }
                 }
             }
         }
-        return totalBatchPrice;
+        return batch;
     }
 
     public int GetProductPriceByCode(Shop shop, int productCode)
