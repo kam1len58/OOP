@@ -1,6 +1,6 @@
-﻿namespace Shop;
+﻿namespace WorkShop;
 
-class Product
+public class Product
 {
     public int Code { get; }
 
@@ -12,5 +12,5 @@ class Product
         Name = name;
     }
 
-    public override string ToString() => $"Товар-{Name}, код товара-{Code}";
+    public override string ToString() => $"Product-{Name}, Product code-{Code}";
 }

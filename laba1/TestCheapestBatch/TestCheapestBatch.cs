@@ -1,9 +1,15 @@
-﻿namespace WorkShop;
+﻿namespace TestCheapestBatch;
 
-class Program
+using System.Text.Json;
+using WorkShop;
+
+[TestClass]
+public sealed class TestCheapestBatch
 {
-    static void Main(string[] args)
+    [TestMethod]
+    public void TestMethodCheapestBatch()
     {
+        //Arrange
         Shop shop1 = new Shop(1, "Магнит", "пр. Мира, 20",
             (new Product(1, "ХЛЕБ"), 80, 45),
             (new Product(2, "МОЛОКО"), 30, 85),
@@ -18,16 +24,16 @@ class Program
         );
 
         Shop shop2 = new Shop(2, "Пятерочка", "ул. Ершова, 50",
-           (new Product(1, "ХЛЕБ"), 35, 40),
-           (new Product(2, "МОЛОКО"), 25, 95),
-           (new Product(3, "РИС"), 30, 100),
-           (new Product(4, "МАСЛО"), 35, 120),
-           (new Product(5, "МЯСО"), 25, 550),
-           (new Product(6, "РЫБА"), 40, 400),
-           (new Product(7, "ЯЙЦА"), 50, 140),
-           (new Product(8, "САХАР"), 80, 90),
-           (new Product(9, "СОЛЬ"), 30, 20),
-           (new Product(10, "КАРТОФЕЛЬ"), 170, 45)
+            (new Product(1, "ХЛЕБ"), 80, 45),
+            (new Product(2, "МОЛОКО"), 30, 85),
+            (new Product(3, "РИС"), 40, 120),
+            (new Product(4, "МАСЛО"), 25, 150),
+            (new Product(5, "МЯСО"), 15, 400),
+            (new Product(6, "РЫБА"), 20, 300),
+            (new Product(7, "ЯЙЦА"), 100, 90),
+            (new Product(8, "САХАР"), 60, 60),
+            (new Product(9, "СОЛЬ"), 50, 30),
+            (new Product(10, "КАРТОФЕЛЬ"), 200, 25)
         );
 
         Shop shop3 = new Shop(3, "Перекрёсток", "ул. Авангардная, 40",
@@ -45,15 +51,18 @@ class Program
         ShopsManager shopsManager = new ShopsManager(new() { shop1, shop2, shop3 });
 
         Dictionary<int, int> batchOfProducts = new() { { 1, 10 }, { 2, 7 }, { 3, 3 }, { 4, 3 }, { 5, 9 }, { 6, 1 }, { 7, 2 }, { 8, 4 }, { 9, 6 }, { 10, 20 } };
-        var cheapestBratch = shopsManager.SearchTheCheapestBatch(batchOfProducts);
-        if (cheapestBratch == null)
-            Console.WriteLine("Покупка партии товаров невозможна из-за нехватки продуктов");
-        else
+        (List<Shop> Shops, int TotalPriceBatch)? cheapestBatch = (new() { shop1 }, 6855);
+
+        //Act
+        var result = shopsManager.SearchTheCheapestBatch(batchOfProducts);
+        var options = new JsonSerializerOptions
         {
-            foreach (var cart in cheapestBratch.Value.Shops)
-            {
-                Console.WriteLine($"Самый дешевая партия товаров в магазине {cart.Name} её стоимость {cheapestBratch.Value.TotalPriceBatch} рублей");
-            }
-        }
+            IncludeFields = true,
+        };
+        string expected = JsonSerializer.Serialize(cheapestBatch, options);
+        string actual = JsonSerializer.Serialize(result, options);
+
+        //Assert
+        Assert.AreEqual(expected, actual);
     }
 }
