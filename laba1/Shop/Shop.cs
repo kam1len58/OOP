@@ -39,7 +39,7 @@ public class Shop
         }
     }
 
-    public static List<(Product Product, int NumberOfProducts)> SearchProductByBudget(Shop shop, int budget)
+    public List<(Product Product, int NumberOfProducts)> SearchProductByBudget(Shop shop, int budget)
     {
         List<(Product Product, int NumberOfProducts)> products = new();
         foreach (var item in shop.ProductSet)
@@ -52,5 +52,4 @@ public class Shop
         }
         return products;
     }
-
 }
