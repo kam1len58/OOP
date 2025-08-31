@@ -16,7 +16,7 @@ class Program
             (new Product(9, "СОЛЬ"), 50, 30),
             (new Product(10, "КАРТОФЕЛЬ"), 200, 45)
         );
-        Shop shop2 = new Shop(2, "Пятерочка", "ул. Ершова, 50", 
+        Shop shop2 = new Shop(2, "Пятерочка", "ул. Ершова, 50",
             (new Product(1, "ХЛЕБ"), 35, 40),
             (new Product(2, "МОЛОКО"), 25, 95),
             (new Product(3, "РИС"), 30, 100),
@@ -42,7 +42,7 @@ class Program
             (new Product(10, "КАРТОФЕЛЬ"), 240, 55)
         );
         ShopsManager shopsManager = new ShopsManager(new() { shop1, shop2, shop3 });
-        var shops = shopsManager.SearchCheapestShops(11);
+        var shops = shopsManager.SearchCheapestShops(10);
         if (shops == null)
             Console.WriteLine("Данный товар отсутствует");
         else
@@ -51,6 +51,6 @@ class Program
             {
                 Console.WriteLine($"Самый дешёвый(ая/ое) {shops.Value.Product.Name} в магазине {item.Name}, код магазина {item.Code}");
             }
-        }  
+        }
     }
 }

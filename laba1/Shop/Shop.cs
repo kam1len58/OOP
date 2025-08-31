@@ -2,16 +2,14 @@
 
 public class Shop
 {
-    private readonly Dictionary<int, (Product Product, int Quanity, int Price)> _products = new();
     public int Code { get; }
     public string Name { get; }
     public string Address { get; }
 
+    private readonly Dictionary<int, (Product Product, int Quanity, int Price)> _products = [];
 
-    public IReadOnlyDictionary<int, (Product Product, int Quanity, int Price)> Products
-    {
-         get { return _products; }
-    }
+
+    public IReadOnlyDictionary<int, (Product Product, int Quanity, int Price)> Products => _products;
 
     public Shop(int code, string name, string address, params (Product Product, int Quanity, int Price)[] products)
     {
@@ -24,7 +22,7 @@ public class Shop
         }
     }
 
-    public void DeliveryBatchProducts(params (Product Product, int Quanity, int Price)[] products)
+    public void AddBatchProducts(params (Product Product, int Quanity, int Price)[] products)
     {
         foreach (var product in products)
         {

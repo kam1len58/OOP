@@ -46,7 +46,7 @@ public class TestShopSearchCheapestShops
             (new Product(10, "КАРТОФЕЛЬ"), 240, 15)
         );
         ShopsManager shopsManager = new ShopsManager(new() { shop1, shop2, shop3 });
-        (List<Shop> Shop, Product Product) cheapestProduct = (new() { shop1, shop3 }, new Product(5, "МЯСО"));
+        (List<Shop> Shop, Product Product)? cheapestProduct = (new() { shop1, shop3 }, new Product(5, "МЯСО"));
 
         //Act
         var result = shopsManager.SearchCheapestShops(5);
