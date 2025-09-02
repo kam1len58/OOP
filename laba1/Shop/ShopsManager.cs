@@ -1,9 +1,9 @@
-﻿namespace WorkShop;
-using System.Linq;
+﻿
+namespace WorkShop;
 
 public class ShopsManager
 {
-    private List<Shop> _shops = new();
+    private List<Shop> _shops = [];
 
     public ShopsManager(List<Shop> shops)
     {
@@ -14,25 +14,32 @@ public class ShopsManager
     {
         (List<Shop> Shop, Product Product)? cheapestShops = null;
         var productsByCode = SearchProductByCodeInShops(productCode);
-        if (productsByCode.Count == 0)
-            return cheapestShops;
-
-        int minProductPrice = productsByCode.First().ProductPrice;
+        bool isProductInStock = true;
         List<Shop> shops = [];
-        foreach (var product in productsByCode)
+        if (productsByCode.Count == 0)
         {
-            if (product.ProductPrice < minProductPrice)
-            {
-                minProductPrice = product.ProductPrice;
-                shops.Clear();
-                shops.Add(product.Shop);
-            }
-            else if (product.ProductPrice == minProductPrice)
-            {
-                shops.Add(product.Shop);
-            }
+            isProductInStock=false;
+            return cheapestShops;
         }
-        cheapestShops = (shops, productsByCode.First().Product);
+
+        if (isProductInStock)
+        {
+            int minProductPrice = productsByCode.First().ProductPrice;
+            foreach (var product in productsByCode)
+            {
+                if (product.ProductPrice < minProductPrice)
+                {
+                    minProductPrice = product.ProductPrice;
+                    shops.Clear();
+                    shops.Add(product.Shop);
+                }
+                else if (product.ProductPrice == minProductPrice)
+                {
+                    shops.Add(product.Shop);
+                }
+            }
+            cheapestShops = (shops, productsByCode.First().Product);
+        }
 
         return cheapestShops;
     }
@@ -44,8 +51,7 @@ public class ShopsManager
         {
             if (shop.Products.TryGetValue(productCode, out var product))
             {
-                if (product.Quanity > 0)
-                    products.Add((shop, product.Product, product.Price));
+                products.Add((shop, product.Product, product.Price));
             }
         }
         return products;
