@@ -41,7 +41,7 @@ public class Shop
 
     public List<(Product Product, int NumberOfProducts)> SearchProductByBudget(Shop shop, int budget)
     {
-        List<(Product Product, int NumberOfProducts)> products = new();
+        List<(Product Product, int NumberOfProducts)> products = [];
         foreach (var item in shop.ProductSet)
         {
             if (budget >= item.Value.Price)
