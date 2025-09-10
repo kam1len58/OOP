@@ -23,7 +23,6 @@ public class ShopsManager
                         if (product.Value.Quanity >= Quantity)
                         {
                             totalPriceBatch += GetProductPriceByCode(shop, product.Key) * Quantity;
-                            batch = (shop, totalPriceBatch);
                         }
                         else
                         {
@@ -31,7 +30,11 @@ public class ShopsManager
                         }
                     }
                 }
-            }
+                if(totalPriceBatch > 0)
+                {
+                    batch = (shop, totalPriceBatch);
+                }
+            }   
         }
         return batch;
     }

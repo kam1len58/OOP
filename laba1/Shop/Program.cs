@@ -4,6 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
+        Logger logger = new Logger();
         Shop shop1 = new Shop(1, "Магнит", "пр. Мира, 20",
             (new Product(1, "ХЛЕБ"), 80, 45),
             (new Product(2, "МОЛОКО"), 30, 85),
@@ -18,8 +19,8 @@ class Program
         );
 
         Shop shop2 = new Shop(2, "Пятерочка", "ул. Ершова, 50",
-           (new Product(1, "ХЛЕБ"), 35, 40),
-           (new Product(2, "МОЛОКО"), 25, 95),
+           (new Product(1, "ХЛЕБ"), 15, 40),
+           (new Product(2, "МОЛОКО"), 15, 95),
            (new Product(3, "РИС"), 30, 100),
            (new Product(4, "МАСЛО"), 35, 120),
            (new Product(5, "МЯСО"), 25, 550),
@@ -46,8 +47,8 @@ class Program
         Dictionary<int, int> batchOfProducts = new() { { 1, 10 }, { 2, 10 }, { 3, 8 } };
         var result = shopManager.BuyBatchOfProducts(2, batchOfProducts);
         if (result == null)
-            Console.WriteLine($"Покупка невозможна из-за нехватки продуктов");
+            logger.WriteLog($"{DateTime.Now}: Покупка невозможна из-за нехватки или отсутствия продуктов");
         else
-            Console.WriteLine($"Стоимость партии товаров в магазине {result.Value.Shop.Name} вышла на {result.Value.TotalPriceBatch} рублей");
+            logger.WriteLog($"{DateTime.Now}: Стоимость партии товаров в магазине {result.Value.Shop.Name} вышла на {result.Value.TotalPriceBatch} рублей");
     }
 }
