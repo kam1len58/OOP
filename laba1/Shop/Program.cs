@@ -4,6 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
+        Logger logger = new Logger();
         Shop shop1 = new Shop(1, "Магнит", "пр. Мира, 20",
             (new Product(1, "ХЛЕБ"), 80, 45),
             (new Product(2, "МОЛОКО"), 30, 85),
@@ -42,17 +43,17 @@ class Program
            (new Product(9, "СОЛЬ"), 40, 35),
            (new Product(10, "КАРТОФЕЛЬ"), 240, 55)
         );
-        ShopsManager shopsManager = new ShopsManager(new() { shop1, shop2, shop3 });
+        ShopsManager shopsManager = new ShopsManager(new() { shop1, shop2 , shop3 });
 
-        Dictionary<int, int> batchOfProducts = new() { { 1, 10 }, { 2, 7 }, { 3, 3 }, { 4, 3 }, { 5, 9 }, { 6, 1 }, { 7, 2 }, { 8, 4 }, { 9, 6 }, { 10, 20 } };
+        Dictionary<int, int> batchOfProducts = new() { { 1, 10 }, { 2, 7 }, { 3, 3 } };
         var cheapestBratch = shopsManager.SearchTheCheapestBatch(batchOfProducts);
         if (cheapestBratch == null)
-            Console.WriteLine("Покупка партии товаров невозможна из-за нехватки продуктов");
+            logger.WriteLog($"{DateTime.Now}: Покупка партии товаров невозможна из-за нехватки продуктов");
         else
         {
             foreach (var cart in cheapestBratch.Value.Shops)
             {
-                Console.WriteLine($"Самый дешевая партия товаров в магазине {cart.Name} её стоимость {cheapestBratch.Value.TotalPriceBatch} рублей");
+                logger.WriteLog($"{DateTime.Now}: Самый дешевая партия товаров в магазине {cart.Name} её стоимость {cheapestBratch.Value.TotalPriceBatch} рублей");
             }
         }
     }
