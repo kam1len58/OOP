@@ -1,7 +1,7 @@
 ﻿
 namespace WorkShop;
 
-class Logger:ILogger
+class Logger : ILogger
 {
     public void WriteLog(string message)
     {

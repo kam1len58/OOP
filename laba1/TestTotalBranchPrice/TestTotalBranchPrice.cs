@@ -1,7 +1,6 @@
-﻿namespace TestTotalBranchPrice;
+﻿using WorkShop;
 
-using WorkShop;
-
+namespace TestTotalBranchPrice;
 
 [TestClass]
 public sealed class TestTotalBranchPrice

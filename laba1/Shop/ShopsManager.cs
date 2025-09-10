@@ -1,4 +1,5 @@
-﻿namespace WorkShop;
+﻿
+namespace WorkShop;
 
 public class ShopsManager
 {
@@ -30,11 +31,11 @@ public class ShopsManager
                         }
                     }
                 }
-                if(totalPriceBatch > 0)
+                if (totalPriceBatch > 0)
                 {
                     batch = (shop, totalPriceBatch);
                 }
-            }   
+            }
         }
         return batch;
     }
