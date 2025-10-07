@@ -43,7 +43,7 @@ public class ShopsManager
         return cheapestBatch;
     }
 
-    public int GetProductPriceByCode(Shop shop, int productCode)
+    private int GetProductPriceByCode(Shop shop, int productCode)
     {
         foreach (var item in shop.Products)
         {
@@ -55,7 +55,7 @@ public class ShopsManager
         return 0;
     }
 
-    public (Shop Shop, int TotalPriceBatch)? BuyBatchOfProducts(int shopCode, Dictionary<int, int> batchOfProducts)
+    private (Shop Shop, int TotalPriceBatch)? BuyBatchOfProducts(int shopCode, Dictionary<int, int> batchOfProducts)
     {
         (Shop Shop, int TotalPriceBatch)? totalBatchPrice = null;
         int totalPriceBatch = 0;

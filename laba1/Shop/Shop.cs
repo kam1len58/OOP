@@ -8,10 +8,7 @@ public class Shop
     public string Name { get; }
     public string Address { get; }
 
-    public IReadOnlyDictionary<int, (Product Product, int Quanity, int Price)> Products
-    {
-        get { return _products; }
-    }
+    public IReadOnlyDictionary<int, (Product Product, int Quanity, int Price)> Products => _products;
 
     public Shop(int code, string name, string address, params (Product Product, int Quanity, int Price)[] products)
     {
