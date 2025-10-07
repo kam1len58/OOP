@@ -1,4 +1,5 @@
-﻿namespace WorkShop;
+﻿
+namespace WorkShop;
 
 public class Shop
 {
@@ -6,26 +7,33 @@ public class Shop
     public string Name { get; }
     public string Address { get; }
 
-    public Shop(int code, string name, string address)
+    private readonly Dictionary<int, (Product Product, int Quanity, int Price)> _products = [];
+
+
+    public IReadOnlyDictionary<int, (Product Product, int Quanity, int Price)> Products => _products;
+
+    public Shop(int code, string name, string address, params (Product Product, int Quanity, int Price)[] products)
     {
         Code = code;
         Name = name;
         Address = address;
+        foreach (var product in products)
+        {
+            _products[product.Product.Code] = product;
+        }
     }
 
-    public Dictionary<int, (Product, int Quanity, int Price)> productSet = new();
-
-    public void DeliveryBatchProducts(params (Product Product, int Quanity, int Price)[] products)
+    public void AddBatchProducts(params (Product Product, int Quantity, int Price)[] products)
     {
         foreach (var product in products)
         {
-            if (productSet.TryGetValue(product.Product.Code, out (Product Product, int Quanity, int Price) value))
+            if (_products.TryGetValue(product.Product.Code, out (Product Product, int Quanity, int Price) value))
             {
-                productSet[product.Product.Code] = (product.Product, product.Quanity + value.Quanity, product.Price);
+                _products[product.Product.Code] = (product.Product, product.Quantity + value.Quanity, product.Price);
             }
             else
             {
-                productSet[product.Product.Code] = (product.Product, product.Quanity, product.Price);
+                _products[product.Product.Code] = (product.Product, product.Quantity, product.Price);
             }
         }
     }
