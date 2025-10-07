@@ -21,7 +21,7 @@ public class Shop
         }
     }
 
-    public void DeliveryBatchProducts(params (Product Product, int Quanity, int Price)[] products)
+    public void AddBatchProducts(params (Product Product, int Quanity, int Price)[] products)
     {
         foreach (var product in products)
         {
