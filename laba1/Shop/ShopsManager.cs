@@ -40,7 +40,7 @@ public class ShopsManager
         return batch;
     }
 
-    public int GetProductPriceByCode(Shop shop, int productCode)
+    private int GetProductPriceByCode(Shop shop, int productCode)
     {
         foreach (var item in shop.Products)
         {
