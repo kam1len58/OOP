@@ -24,7 +24,7 @@ public class Shop
 
     private Dictionary<int, (Product Product, int Quanity, int Price)> productSet = new();
 
-    public void DeliveryBatchProducts(params (Product Product, int Quanity, int Price)[] products)
+    public void AddBatchProducts(params (Product Product, int Quanity, int Price)[] products)
     {
         foreach (var product in products)
         {
