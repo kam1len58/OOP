@@ -111,7 +111,7 @@ public sealed class TestCheapestBatch
         ShopsManager shopsManager = new ShopsManager(new() { shop1, shop2, shop3 });
 
         Dictionary<int, int> batchOfProducts = new() { { 1, 100 }, { 2, 700 }, { 3, 300 } };
-        (List<Shop> Shops, int TotalPriceBatch)? cheapestBatch = null;
+        (HashSet<Shop> Shops, int TotalPriceBatch)? cheapestBatch = null;
 
         //Act
         var result = shopsManager.SearchTheCheapestBatch(batchOfProducts);
@@ -136,7 +136,7 @@ public sealed class TestCheapestBatch
         ShopsManager shopsManager = new ShopsManager(new() { shop1, shop2, shop3 });
 
         Dictionary<int, int> batchOfProducts = new() { { 5, 100 }, { 2, 700 }, { 1, 300 } };
-        (List<Shop> Shops, int TotalPriceBatch)? cheapestBatch = null;
+        (HashSet<Shop> Shops, int TotalPriceBatch)? cheapestBatch = null;
 
         //Act
         var result = shopsManager.SearchTheCheapestBatch(batchOfProducts);
@@ -196,7 +196,7 @@ public sealed class TestCheapestBatch
         ShopsManager shopsManager = new ShopsManager(new() { shop1, shop2, shop3 });
 
         Dictionary<int, int> batchOfProducts = new() { { 1, 10 }, { 2, 7 }, { 3, 3 } };
-        (List<Shop> Shops, int TotalPriceBatch)? cheapestBatch = (new() { shop2 }, 1365);
+        (HashSet<Shop> Shops, int TotalPriceBatch)? cheapestBatch = (new() { shop2 }, 1365);
 
         //Act
         var result = shopsManager.SearchTheCheapestBatch(batchOfProducts);
@@ -233,7 +233,7 @@ public sealed class TestCheapestBatch
         ShopsManager shopsManager = new ShopsManager(new() { shop1, shop2, shop3 });
 
         Dictionary<int, int> batchOfProducts = new() { { 1, 10 }, { 2, 7 }, { 3, 3 }, { 4, 3 }, { 5, 9 }, { 6, 1 }, { 7, 2 }, { 8, 4 }, { 9, 6 }, { 10, 20 } };
-        (List<Shop> Shops, int TotalPriceBatch)? cheapestBatch = (new() { shop1 }, 6855);
+        (HashSet<Shop> Shops, int TotalPriceBatch)? cheapestBatch = (new() { shop1 }, 6855);
 
         //Act
         var result = shopsManager.SearchTheCheapestBatch(batchOfProducts);
@@ -293,7 +293,7 @@ public sealed class TestCheapestBatch
         ShopsManager shopsManager = new ShopsManager(new() { shop1, shop2, shop3 });
 
         Dictionary<int, int> batchOfProducts = new() { { 1, 10 }, { 2, 7 }, { 3, 3 } };
-        (List<Shop> Shops, int TotalPriceBatch)? cheapestBatch = null;
+        (HashSet<Shop> Shops, int TotalPriceBatch)? cheapestBatch = null;
 
         //Act
         var result = shopsManager.SearchTheCheapestBatch(batchOfProducts);

@@ -10,10 +10,10 @@ public class ShopsManager
         _shops = shops;
     }
 
-    public (List<Shop> Shops, int TotalPriceBatch)? SearchTheCheapestBatch(Dictionary<int, int> batchOfProducts)
+    public (HashSet<Shop> Shops, int TotalPriceBatch)? SearchTheCheapestBatch(Dictionary<int, int> batchOfProducts)
     {
-        (List<Shop> Shops, int TotalPriceBatch)? cheapestBatch = null;
-        List<Shop> shops = new();
+        (HashSet<Shop> Shops, int TotalPriceBatch)? cheapestBatch = null;
+        HashSet<Shop> shops = new();
         (Shop Shop, int TotalPriceBatch)? productsBatch = null;
         foreach (var shop in _shops)
         {
