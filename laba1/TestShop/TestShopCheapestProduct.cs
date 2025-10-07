@@ -47,7 +47,7 @@ public class TestShopSearchCheapestShops
             (new Product(10, "КАРТОФЕЛЬ"), 240, 15)
         );
         ShopsManager shopsManager = new ShopsManager(new() { shop1, shop2, shop3 });
-        (List<Shop> Shop, Product Product)? cheapestProduct = (new() { shop1, shop3 }, new Product(5, "МЯСО"));
+        (HashSet<Shop> Shop, Product Product)? cheapestProduct = (new() { shop1, shop3 }, new Product(5, "МЯСО"));
 
         //Act
         var result = shopsManager.SearchCheapestShops(5);
@@ -103,7 +103,7 @@ public class TestShopSearchCheapestShops
             (new Product(10, "КАРТОФЕЛЬ"), 0, 15)
         );
         ShopsManager shopsManager = new ShopsManager(new() { shop1, shop2, shop3 });
-        (List<Shop> Shop, Product Product)? cheapestProduct = (new() { shop3 }, new Product(10, "КАРТОФЕЛЬ"));
+        (HashSet<Shop> Shop, Product Product)? cheapestProduct = (new() { shop3 }, new Product(10, "КАРТОФЕЛЬ"));
 
         //Act
         var result = shopsManager.SearchCheapestShops(10);
@@ -137,7 +137,7 @@ public class TestShopSearchCheapestShops
         Shop shop2 = new Shop(2, "Пятерочка", "ул. Ершова, 50");
         Shop shop3 = new Shop(3, "Перекрёсток", "ул. Авангардная, 40");
         ShopsManager shopsManager = new ShopsManager(new() { shop1, shop2, shop3 });
-        (List<Shop> Shop, Product Product)? cheapestProduct = (new() { shop1 }, new Product(4, "МАСЛО"));
+        (HashSet<Shop> Shop, Product Product)? cheapestProduct = (new() { shop1 }, new Product(4, "МАСЛО"));
 
         //Act
         var result = shopsManager.SearchCheapestShops(4);
@@ -160,7 +160,7 @@ public class TestShopSearchCheapestShops
         Shop shop2 = new Shop(2, "Пятерочка", "ул. Ершова, 50");
         Shop shop3 = new Shop(3, "Перекрёсток", "ул. Авангардная, 40");
         ShopsManager shopsManager = new ShopsManager(new() { shop1, shop2, shop3 });
-        (List<Shop> Shop, Product Product)? cheapestProduct = null;
+        (HashSet<Shop> Shop, Product Product)? cheapestProduct = null;
 
         //Act
         var result = shopsManager.SearchCheapestShops(5);

@@ -10,12 +10,12 @@ public class ShopsManager
         _shops = shops;
     }
 
-    public (List<Shop> Shop, Product Product)? SearchCheapestShops(int productCode)
+    public (HashSet<Shop> Shop, Product Product)? SearchCheapestShops(int productCode)
     {
-        (List<Shop> Shop, Product Product)? cheapestShops = null;
+        (HashSet<Shop> Shop, Product Product)? cheapestShops = null;
         var productsByCode = SearchProductByCodeInShops(productCode);
         bool isProductInStock = true;
-        List<Shop> shops = [];
+        HashSet<Shop> shops = [];
         if (productsByCode.Count == 0)
         {
             isProductInStock=false;
